@@ -6,9 +6,9 @@ public interface InterfaceMovimientoParabolico {
 
     double velocidadInicialY();
 
-    double tiempoVueloY();
-
     double tiempoAlturaMaximaY();
+
+    double tiempoVueloY();
 
     double alturaMaximaY();
 
