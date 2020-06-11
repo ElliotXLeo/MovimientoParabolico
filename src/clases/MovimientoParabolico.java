@@ -1,14 +1,16 @@
 package clases;
 
-public class MovimientoParabolico extends Cinematica implements InterfaceMovimientoParabolico{
-    private double gravedad;
+public class MovimientoParabolico extends Cinematica implements InterfaceMovimientoParabolico {
+
+    private double gravedad = 9.8;
     private double angulo;
-    private double posicionInicialY;
+    private double posicionInicialY = 0;
 
     public MovimientoParabolico() {
     }
 
-    public MovimientoParabolico(double gravedad, double angulo, double posicionInicialY) {
+    public MovimientoParabolico(double gravedad, double angulo, double posicionInicialY, double velocidad) {
+        super(velocidad);
         this.gravedad = gravedad;
         this.angulo = angulo;
         this.posicionInicialY = posicionInicialY;
@@ -20,8 +22,7 @@ public class MovimientoParabolico extends Cinematica implements InterfaceMovimie
         this.angulo = angulo;
         this.posicionInicialY = posicionInicialY;
     }
-    
-   
+
     @Override
     public double aceleracion() {
         return this.gravedad;
@@ -29,27 +30,28 @@ public class MovimientoParabolico extends Cinematica implements InterfaceMovimie
 
     @Override
     public double velocidadInicialX() {
-        return (super.getVelocidad()*Math.sin(this.angulo));
+        return (super.getVelocidad() * Math.cos(Math.toRadians(this.angulo)));
     }
 
     @Override
     public double velocidadInicialY() {
-        return (super.getVelocidad()*Math.cos(this.angulo));
+        return (super.getVelocidad() * Math.sin(Math.toRadians(this.angulo)));
     }
 
     @Override
     public double tiempoAlturaMaximaY() {
-        return ((velocidadInicialY()-this.posicionInicialY)/aceleracion());
+        return (velocidadInicialY() / aceleracion());
     }
-    
+
     @Override
     public double tiempoVueloY() {
-        return ((-velocidadInicialY()+Math.pow((Math.pow(tiempoAlturaMaximaY(), 2) - (4*aceleracion()/2*this.posicionInicialY)), (1/2)))/(2*(aceleracion()/2)));
+        return ((-velocidadInicialY() - (Math.pow((Math.pow(velocidadInicialY(), 2) - (4.0 * (-aceleracion() / 2.0) * this.posicionInicialY)), (1.0 / 2.0))))) / ((2.0 * (-aceleracion() / 2.0)));
+        
     }
 
     @Override
     public double alturaMaximaY() {
-        return (this.posicionInicialY + velocidadInicialY())*tiempoAlturaMaximaY()-(1/2)*aceleracion()*(Math.pow(tiempoAlturaMaximaY(), 2));
+        return (this.posicionInicialY + (velocidadInicialY() * tiempoAlturaMaximaY()) - ((1.0 / 2.0) * aceleracion() * (Math.pow(tiempoAlturaMaximaY(), 2))));
     }
 
     @Override
@@ -80,5 +82,5 @@ public class MovimientoParabolico extends Cinematica implements InterfaceMovimie
     public void setPosicionInicialY(double posicionInicialY) {
         this.posicionInicialY = posicionInicialY;
     }
-    
+
 }

@@ -11,6 +11,10 @@ public abstract class Cinematica {
     public Cinematica() {
     }
 
+    public Cinematica(double velocidad) {
+        this.velocidad = velocidad;
+    }
+
     public Cinematica(double tiempo, double velocidad, double desplazamiento) {
         this.tiempo = tiempo;
         this.velocidad = velocidad;
