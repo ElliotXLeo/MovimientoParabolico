@@ -46,7 +46,7 @@ public class MovimientoParabolico extends Cinematica implements InterfaceMovimie
     @Override
     public double tiempoVueloY() {
         return ((-velocidadInicialY() - (Math.pow((Math.pow(velocidadInicialY(), 2) - (4.0 * (-aceleracion() / 2.0) * this.posicionInicialY)), (1.0 / 2.0))))) / ((2.0 * (-aceleracion() / 2.0)));
-        
+
     }
 
     @Override
