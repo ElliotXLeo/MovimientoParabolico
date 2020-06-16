@@ -12,7 +12,7 @@ public class CalculoMovimientoParabolico {
 
         //Creación de objeto movimientoParabolico
         MovimientoParabolico movimientoParabolico = new MovimientoParabolico();
-        
+
         //Ingreso de valores
         Scanner ingreso = new Scanner(System.in);
         System.out.println("Ingrese velocidad en m/s");
